@@ -1,0 +1,47 @@
+<div class="vw-100 vh-custom d-flex justify-content-center align-items-center flex-column">
+  <div class="contianer min-w-70">
+    <div class="w-100 d-flex flex-wrap">
+      <div class="col-12">
+          <h2 class="text-center">Assigned Users</h2>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="text-center">Trainer name</th>
+              <th scope="col" class="text-center">Assigned Users</th>
+              <th scope="col" class="text-center">Remaining plces</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let info of assigned">
+            <tr>
+              <td class="text-center">{{ info.trainerName }}</td>
+              <td>
+                <div *ngFor="let assign of info.assignedUsers" class="text-center">
+                  {{assign.name}}
+                  <br>
+                </div>
+              </td>
+              <td class="text-center">{{ info.remainingPlaces }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 mt-20" *ngIf="queuing.length != 0">
+        <h2 class="text-center">Unassigned Users</h2>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="text-center">Users whitout trainer</th>
+              <th scope="col" class="text-center">Rate relevance</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let userQueu of queuing;let i=index">
+            <tr>
+              <td class="text-center">{{ userQueu.name }}</td>
+              <td class="text-center">{{ userQueu.relevanceRate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

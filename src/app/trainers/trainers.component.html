@@ -1,0 +1,60 @@
+<div class="vw-100 d-flex justify-content-center align-items-center flex-column over-flow-x-hidden">
+  <h2>Trainers</h2>
+  <div class="contianer min-w-70">
+    <div class="w-100 d-flex flex-wrap">
+      <div class="col-12">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="text-center">Client number</th>
+              <th scope="col" class="text-center">Name</th>
+              <th scope="col" class="text-center">Reputation</th>
+              <th scope="col" class="text-center">Available Places</th>
+              <th scope="col" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let trainer of trainers;let i=index">
+            <tr>
+              <th scope="row" class="text-center">{{ i+1 }}</th>
+              <td class="text-center">{{ trainer.name }}</td>
+              <td class="text-center">{{ trainer.rateReputation }}</td>
+              <td class="text-center">{{ trainer.availablePlaces }}</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-danger" (click)="deleteItem(trainer)">Danger</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModalCenter">Add Trainer</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Trainer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #login="ngForm" (ngSubmit)="onClickSubmit(login.value)" >
+          <input class="form-control" type="text" name="name" placeholder="Name" ngModel>
+          <br/>
+          <input type="number" class="form-control" name="rateReputation" placeholder="Reputation" ngModel>
+          <br/>
+          <input type="number" class="form-control" name="availablePlaces" placeholder="Available places" ngModel>
+          <br/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" value="submit">Save changes</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
